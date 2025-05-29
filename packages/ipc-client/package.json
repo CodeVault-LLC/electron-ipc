@@ -1,0 +1,23 @@
+{
+  "name": "@codevault/electron-ipc",
+  "version": "0.0.1",
+  "description": "A simple IPC library for Electron applications",
+  "main": "dist/main.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/main.js --external:electron",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@codevault/shared": "workspace:*",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "electron": "^35.1.5"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.5"
+  }
+}

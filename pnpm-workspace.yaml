@@ -1,0 +1,7 @@
+packages:
+  - "packages/ipc-client/**"
+  - "packages/ipc-server/**"
+  - "packages/shared/**"
+
+  - "examples/**"
+hoist: false
