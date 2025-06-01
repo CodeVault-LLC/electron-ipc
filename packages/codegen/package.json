@@ -1,0 +1,11 @@
+{
+  "name": "@codevault/electron-ipc-codegen",
+  "bin": {
+    "codegen": "./dist/electron-ipc-gen"
+  },
+  "version": "0.1.0",
+  "scripts": {
+    "start": "go run main.go",
+    "build": "go build -o dist/electron-ipc-gen main.go"
+  }
+}

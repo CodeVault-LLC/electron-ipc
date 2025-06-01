@@ -1,13 +1,10 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import { IpcDefinition, registerIpcHandlers } from '@codevault/electron-ipc-server'
 
-export interface Channels extends IpcDefinition {
-  ping: { req: string; res: string }
-  'subscribe-time': { req: null; res: string }
-}
+import { initializeIpcMain, registerRoutes } from '@codevault/electron-ipc-server'
+import { userRoutes } from './routes'
 
 function createWindow(): void {
   // Create the browser window.
@@ -55,15 +52,9 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  registerIpcHandlers<Channels>({
-    ping: (msg) => `Pong: ${msg}`,
-    'subscribe-time': () => {
-      return null
-    }
-  })
+  registerRoutes(userRoutes)
 
-  // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  initializeIpcMain()
 
   createWindow()
 

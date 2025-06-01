@@ -1,0 +1,4 @@
+{
+  "root": "src/main",
+  "typeDefinitionFile": "src/renderer/src/ipc.gen.ts"
+}

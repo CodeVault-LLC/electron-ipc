@@ -2,6 +2,5 @@ packages:
   - "packages/ipc-client/**"
   - "packages/ipc-server/**"
   - "packages/shared/**"
-
-  - "examples/**"
+  - "packages/codegen/**"
 hoist: false
