@@ -23,6 +23,22 @@ export const userRoutes = declareRoutes({
     },
     isStream: false
   },
+  'user:all': {
+    handler: async (limit: number): Promise<{ id: string; name: string }[]> => {
+      const users = [
+        { id: '1', name: 'Alice' },
+        { id: '2', name: 'Bob' },
+        { id: '3', name: 'Charlie' }
+      ]
+
+      if (limit > users.length) {
+        throw new Error(`Limit exceeds available users: ${limit}`)
+      }
+
+      return users.slice(0, limit)
+    },
+    isStream: false
+  },
   'system:logs': {
     handler: async function* (args: { count: number }) {
       for (let i = 0; i < args.count; i++) {

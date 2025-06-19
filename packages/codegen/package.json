@@ -1,11 +1,16 @@
 {
   "name": "@codevault/electron-ipc-codegen",
-  "bin": {
-    "codegen": "./dist/electron-ipc-gen"
-  },
   "version": "0.1.0",
   "scripts": {
-    "start": "go run main.go",
-    "build": "go build -o dist/electron-ipc-gen main.go"
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "ts-morph": "^26.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.3",
+    "typescript": "^5.8.3"
   }
 }
